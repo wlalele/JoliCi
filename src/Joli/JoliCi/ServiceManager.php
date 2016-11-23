@@ -49,9 +49,9 @@ class ServiceManager
             $serviceConfig = $service->getConfig();
             $containerConfig = new ContainerConfig();
             $containerConfig->setImage(sprintf('%s:%s', $service->getRepository(), $service->getTag()));
-            $containerConfig->setLabels([
+            $containerConfig->setLabels(new \ArrayObject([
                 'com.jolici.container=true'
-            ]);
+            ]));
 
             if (isset($serviceConfig['Env'])) {
                 $containerConfig->setEnv($serviceConfig['Env']);
